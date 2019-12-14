@@ -28,7 +28,7 @@ if(!empty($_GET["action"])){
 
     /* Data */
 
-    if($data != null){
+    if(!empty($data)){
         $json["status"] = "SUCCESS";
         $json["data"] = $data;
     }else{
