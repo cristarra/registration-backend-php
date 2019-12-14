@@ -47,8 +47,8 @@ if(!empty($_GET["action"])){
 
 /*for local test purpose*/
 header('Access-Control-Allow-Origin: *'); 
+header('Access-Control-Allow-Headers: Origin, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, X-Response-Time, X-PINGOTHER, X-CSRF-Token,Authorization');
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
-header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
 /*end for local test purpose*/
 header('Content-Type: application/json');
 echo json_encode($json,JSON_PRETTY_PRINT);
