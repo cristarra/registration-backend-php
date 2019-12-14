@@ -5,18 +5,19 @@ require_once 'include/config.php';
 /* End Config */
 
 $json = array();
-            
-if(!empty($_GET["action"])){
+$action = basename($_SERVER['REQUEST_URI']);
 
-    if($_GET["action"]=="user_check_email"){
+if(!empty($action)){
+
+    if($action=="user_check_email"){
 
         require_once './user/user_check_email.php';
 
-    }else if($_GET["action"]=="user_check_phone_number"){
+    }else if($action=="user_check_phone_number"){
 
         require_once './user/user_check_phone_number.php';
 
-    }else if($_GET["action"]=="user_add"){
+    }else if($action=="user_add"){
 
         require_once './user/user_add.php';
 
@@ -47,10 +48,12 @@ if(!empty($_GET["action"])){
 
 /*for local test purpose*/
 header('Access-Control-Allow-Origin: *'); 
-header('Access-Control-Allow-Headers: Origin, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, X-Response-Time, X-PINGOTHER, X-CSRF-Token,Authorization');
+header('Access-Control-Allow-Headers: Origin, Accept, Accept-  Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, X-Response-Time, X-PINGOTHER, X-CSRF-Token,Authorization');
 header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
 /*end for local test purpose*/
 header('Content-Type: application/json');
+$json["request_data"] = $_POST;
+$json["request_url"] = $action;
 echo json_encode($json,JSON_PRETTY_PRINT);
 
 require_once 'include/close.php';
