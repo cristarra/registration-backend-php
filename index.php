@@ -45,6 +45,11 @@ if(!empty($_GET["action"])){
     $json["error_msg_en"] = "Cannot do this action";
 }
 
+/*for local test purpose*/
+header('Access-Control-Allow-Origin: *'); 
+header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
+/*end for local test purpose*/
 header('Content-Type: application/json');
 echo json_encode($json,JSON_PRETTY_PRINT);
 
